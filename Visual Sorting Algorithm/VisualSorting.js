@@ -24,56 +24,6 @@ function setup() {
   });
 }
 
-//quickSort with the array to sort and
-//the bounds which to perform the quickSort between
-async function quickSort(arr, start, end) {
-	//checks to see if the boundary in which the sort is performed can exist
-	//If not it returns as the sort has finished
-  if (start >= end) {
-    return;
-  }
-	//Creates the partition
-  let index = await partition(arr, start, end);
-  //Starts asynchronous new quicksorts
-  await Promise.all([
-    quickSort(arr, start, index - 1),
-    quickSort(arr, index + 1, end)
-  ]);
-}
-
-async function partition(arr, start, end) {
-  let pivotValue = arr[end];
-  let pivotIndex = start;
-  for (let i = start; i < end; i++) {
-    if (arr[i] < pivotValue) {
-      await swap(arr, i, pivotIndex);
-      pivotIndex++;
-    }
-  }
-  await swap(arr, pivotIndex, end);
-  return pivotIndex;
-}
-
-
-
-async function bubbleSort(arr,arrLength,barPosition){
-  //If there is only single element
-  //the return the array
-  if(arrLength == 1){
-    return arr;
-  }
-  if(barPosition >= arr.length){
-    barPosition = 0;
-  }
-  //Swap the elements by comparing them
-  if(arr[barPosition] > arr[barPosition+1]){
-    await swap(arr,barPosition,barPosition+1);
-  }
-
-  //Recursively call the function to sort.
-  await bubbleSort(arr, arrLength-1,barPosition+1);
-}
-
 function draw() {
 	background(0);
 	if(sorting){
@@ -82,19 +32,11 @@ function draw() {
 	}
 	else{
 		for (let i = 0; i < values.length; i++) {
-
 			strokeWeight(1);
 			stroke(51);
 	    rect(i * barWidth, height - values[i], barWidth, values[i]);
 	  }
 	}
-}
-
-async function swap(arr, a, b) {
-  await sleep(50);
-  let temp = arr[a];
-  arr[a] = arr[b];
-  arr[b] = temp;
 }
 
 function sleep(ms) {
