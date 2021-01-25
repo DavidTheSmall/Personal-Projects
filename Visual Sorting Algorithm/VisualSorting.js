@@ -15,7 +15,8 @@ function setup() {
   settings.addDropDown("Type of Sort",["Quick sort",
                                        "Bubble sort",
                                        "Selection sort",
-                                       "Heap sort"],
+                                       "Heap sort",
+                                       "Insertion sort"],
                                         function() {
     sortType = settings.getValue("Type of Sort").index;
   });
@@ -69,5 +70,7 @@ function beginSort(){
     selectionSort(values);
   if(sortType == 3)
     heapSort(values);
+  if(sortType == 4)
+    insertionSort(values);
 
 }
