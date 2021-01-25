@@ -16,7 +16,8 @@ function setup() {
                                        "Bubble sort",
                                        "Selection sort",
                                        "Heap sort",
-                                       "Insertion sort"],
+                                       "Insertion sort",
+                                        "Bogo sort"],
                                         function() {
     sortType = settings.getValue("Type of Sort").index;
   });
@@ -72,5 +73,7 @@ function beginSort(){
     heapSort(values);
   if(sortType == 4)
     insertionSort(values);
+  if(sortType == 5)
+    bogoSort(values);
 
 }
