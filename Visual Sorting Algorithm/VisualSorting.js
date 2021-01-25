@@ -12,7 +12,10 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 	//Set up User Interface
   var settings = QuickSettings.create(20, 20, "Settings");
-  settings.addDropDown("Type of Sort",["quicksort","bubblesort"],function() {
+  settings.addDropDown("Type of Sort",["quicksort",
+                                       "bubblesort",
+                                       "selectionSort"],
+                                        function() {
     sortType = settings.getValue("Type of Sort").index;
   });
 
@@ -43,6 +46,9 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+
+
+
 function beginSort(){
 	barWidth = windowWidth/NumberOfBars;
 	//Creates the array with size of the width of the canvas
@@ -55,8 +61,10 @@ function beginSort(){
 	}
 	//Starts the quicksort giving it the array
   if(sortType == 0)
-	 quickSort(values, 0, values.length - 1);
-  else if(sortType == 1)
-    bubbleSort(values,values.length*NumberOfBars,barPosition);
+	 alert(quickSort(values, 0, values.length - 1));
+    if(sortType == 1)
+    alert(bubbleSort(values,values.length*NumberOfBars,barPosition));
+      if(sortType == 2)
+        selectionSort(values);
 
 }
