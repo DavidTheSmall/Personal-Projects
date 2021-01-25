@@ -12,9 +12,10 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 	//Set up User Interface
   var settings = QuickSettings.create(20, 20, "Settings");
-  settings.addDropDown("Type of Sort",["quicksort",
-                                       "bubblesort",
-                                       "selectionSort"],
+  settings.addDropDown("Type of Sort",["Quick sort",
+                                       "Bubble sort",
+                                       "Selection sort",
+                                       "Heap sort"],
                                         function() {
     sortType = settings.getValue("Type of Sort").index;
   });
@@ -61,10 +62,12 @@ function beginSort(){
 	}
 	//Starts the quicksort giving it the array
   if(sortType == 0)
-	 alert(quickSort(values, 0, values.length - 1));
-    if(sortType == 1)
-    alert(bubbleSort(values,values.length*NumberOfBars,barPosition));
-      if(sortType == 2)
-        selectionSort(values);
+	  quickSort(values, 0, values.length - 1);
+  if(sortType == 1)
+    bubbleSort(values,values.length*NumberOfBars,barPosition);
+  if(sortType == 2)
+    selectionSort(values);
+  if(sortType == 3)
+    heapSort(values);
 
 }

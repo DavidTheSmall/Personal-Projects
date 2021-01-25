@@ -1,10 +1,10 @@
 async function selectionSort(arr){
     for (let i = 0; i < arr.length; i++) {
         let min = i;
-        await sleep(50);
         for (let j = i + 1; j < arr.length; j++) {
             if (arr[min] > arr[j]) {
-                min = j;
+                min = j;              
+                await sleep(50);
             }
         }
         if (min !== i) {
